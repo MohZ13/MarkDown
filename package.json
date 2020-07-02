@@ -1,0 +1,27 @@
+{
+  "name": "markdown",
+  "version": "1.0.0",
+  "description": "Markdown editor PWA",
+  "author": "Mohil Zalavadiya",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --env.prod"
+  },
+  "dependencies": {
+    "bulma": "^0.9.0",
+    "dompurify": "^2.0.12",
+    "marked": "^1.1.0"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
