@@ -1,2 +1,36 @@
 @charset "utf-8";
-@import '../node_modules/bulma/bulma.sass';
+
+// Import only needed styles from Bulma to reduce bundle size
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+
+@import "../node_modules/bulma/sass/grid/columns.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/box.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+
+@import "../node_modules/bulma/sass/form/shared.sass";
+@import "../node_modules/bulma/sass/form/input-textarea.sass";
+
+@import "../node_modules/bulma/sass/helpers/spacing.sass";
+@import "../node_modules/bulma/sass/helpers/visibility.sass";
+
+@import "../node_modules/bulma/sass/components/navbar.sass";
+
+.is-borderless {
+    border: 0;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.wrap-pre {
+    white-space: pre;
+}
