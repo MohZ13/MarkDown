@@ -8,16 +8,18 @@
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 @import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/elements/box.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/elements/other.sass";
 
 @import "../node_modules/bulma/sass/form/shared.sass";
 @import "../node_modules/bulma/sass/form/input-textarea.sass";
 
+@import "../node_modules/bulma/sass/helpers/color.sass";
 @import "../node_modules/bulma/sass/helpers/spacing.sass";
 @import "../node_modules/bulma/sass/helpers/visibility.sass";
 
 @import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/modal.sass";
 
 .is-borderless {
     border: 0;
@@ -33,4 +35,10 @@
 
 .wrap-pre {
     white-space: pre;
+}
+
+.shadowed {
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
 }

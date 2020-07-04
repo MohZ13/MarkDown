@@ -54,7 +54,7 @@ function bindLayoutSwitchEvent() {
  * Resizes column heights for editor and preview
  */
 function resizeColumns() {
-    $('.field').each(function () {
+    $('.wrapper').each(function () {
         $(this).height(window.innerHeight - this.offsetTop - 50);
     });
 }
@@ -91,6 +91,80 @@ function bindMarkdownSrcChange() {
 }
 
 /**
+ * Opens modal
+ * @param {string} fileName Name of the file to be pre-filled
+ * @param {boolean} isHtml is for HTML or src string
+ */
+function openModal(fileName, isHtml) {
+    $('#export-file-modal').addClass('is-active');
+
+    const fileNameInput = $('#filename-input');
+    fileNameInput.val(fileName);
+    fileNameInput.attr('data-target', isHtml ? 'html' : 'src');
+}
+
+/**
+ * Saves file
+ */
+function saveFile() {
+    const fileName = $('#filename-input').val();
+
+    if (!fileName) {
+        return;
+    }
+
+    const isHtml = fileNameInput.attr('data-target') === 'html';
+    let mimeType, content;
+    if (isHtml) {
+        mimeType = 'text/html';
+        content = $('#markdown-target').contents().find('body').html();
+    } else {
+        mimeType = 'text/markdown';
+        content = $('#markdown-src').val();
+    }
+
+    const downloadLink = document.createElement('a');
+    downloadLink.setAttribute('download', fileName);
+    downloadLink.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(content));
+    downloadLink.click();
+}
+
+/**
+ * Binds click events for file export related buttons
+ */
+function bindExportLinkClicks() {
+    $('#export-src-link').click(() => openModal('untitled.md', false));
+    $('#export-target-link').click(() => openModal('untitled.html', true));
+    $('#save-file').click(saveFile);
+    $('.close-modal-btn').click(() => $('#export-file-modal').removeClass('is-active'));
+}
+
+/**
+ * Binds filename input change event
+ * for showing error and disabling button on empty filename
+ */
+function bindFileNameChanged() {
+    const filenameInput = $('#filename-input');
+    const saveFileButton = $('#save-file');
+
+    const isSuccessClass = 'is-success';
+    const isDangerClass = 'is-danger';
+    const isStaticClass = 'is-static';
+
+    filenameInput.on('input', debounce((event) => {
+        if (event.target.value) {
+            filenameInput.removeClass(isDangerClass);
+            filenameInput.addClass(isSuccessClass);
+            saveFileButton.removeClass(isStaticClass);
+        } else {
+            filenameInput.removeClass(isSuccessClass);
+            filenameInput.addClass(isDangerClass)
+            saveFileButton.addClass(isStaticClass);
+        }
+    }, 150));
+}
+
+/**
  * Initializations to be done after document is ready
  */
 function onDocumentReady() {
@@ -99,6 +173,8 @@ function onDocumentReady() {
     bindMarkdownSrcChange();
     bindNavbarBurgerClickEvent();
     bindLayoutSwitchEvent();
+    bindExportLinkClicks();
+    bindFileNameChanged();
 
     // initialization things
     resizeColumns();

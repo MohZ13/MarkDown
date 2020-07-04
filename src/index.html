@@ -7,7 +7,7 @@
     <title>MarkDown editor</title>
 </head>
 
-<body>
+<body class="has-background-grey-lighter">
     <!-- Navbar start -->
     <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand" id="main-navbar">
@@ -30,6 +30,20 @@
 
         <div class="navbar-menu">
             <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Export
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" id="export-src-link">
+                            Source Markdown
+                        </a>
+                        <a class="navbar-item" id="export-target-link">
+                            Rendered Markdown
+                        </a>
+                    </div>
+                </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Built using
@@ -57,20 +71,43 @@
         <div class="columns is-mobile is-1">
             <div class="column" id="editor-column">
                 <h1 class="title">Editor</h1>
-                <div class="field box px-0 py-0">
+                <div class="wrapper field shadowed px-0 py-0">
                     <textarea id="markdown-src" class="textarea is-dark is-medium is-borderless height-100 wrap-pre"
                         placeholder="Add Markdown here..."></textarea>
                 </div>
             </div>
             <div class="column is-hidden-touch" id="preview-column">
                 <h1 class="title">Preview</h1>
-                <div class="field box px-0 py-0">
-                    <iframe id="markdown-target" class="height-100 width-100"></iframe>
+                <div class="wrapper field shadowed px-0 py-0">
+                    <iframe id="markdown-target" class="has-background-white height-100 width-100"></iframe>
                 </div>
             </div>
         </div>
     </section>
     <!-- Main section end -->
+
+    <!-- Export modal start -->
+    <div class="modal px-3 py-3" id="export-file-modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head has-background-dark">
+                <p class="modal-card-title has-text-white">Enter file name</p>
+                <button class="delete close-modal-btn" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body has-background-grey-light">
+                <div class="field">
+                    <div class="control">
+                        <input id="filename-input" class="input is-success" type="text" placeholder="Enter file name">
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot has-background-dark">
+                <button class="button is-success is-small is-light" id="save-file">Save changes</button>
+                <button class="button is-danger is-small is-light close-modal-btn">Cancel</button>
+            </footer>
+        </div>
+    </div>
+    <!-- Export modal end -->
 </body>
 
 </html>
