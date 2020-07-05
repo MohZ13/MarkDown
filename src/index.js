@@ -181,4 +181,16 @@ function onDocumentReady() {
     renderMarkdown($('#markdown-src').val());
 }
 
+/**
+ * Registers service worker for caching files
+ */
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+}
+
 $(document).ready(onDocumentReady);
+registerServiceWorker();

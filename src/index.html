@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="A simple Markdown editor app.">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121212"/>
+    <link rel="apple-touch-icon" href="./assets/md-app-logo-192.png">
     <title>MarkDown editor</title>
 </head>
 
@@ -12,7 +16,7 @@
     <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand" id="main-navbar">
             <div class="navbar-item" href="https://bulma.io">
-                <img src="./assets/markdown-logo-dark.png">
+                <img src="./assets/markdown-logo-dark.png" alt="markdown logo">
             </div>
 
             <a class="navbar-item is-hidden-desktop">
@@ -50,13 +54,13 @@
                     </a>
 
                     <div class="navbar-dropdown is-right">
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="https://bulma.io/" target="_blank" rel="noreferrer">
                             Bulma
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="https://marked.js.org/" target="_blank" rel="noreferrer">
                             Marked
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="https://jquery.com/" target="_blank" rel="noreferrer">
                             jQuery
                         </a>
                     </div>
@@ -71,15 +75,15 @@
         <div class="columns is-mobile is-1">
             <div class="column" id="editor-column">
                 <h1 class="title">Editor</h1>
-                <div class="wrapper field shadowed px-0 py-0">
+                <div class="wrapper field shadowed px-0 py-0 border-rad-4">
                     <textarea id="markdown-src" class="textarea is-dark is-medium is-borderless height-100 wrap-pre"
                         placeholder="Add Markdown here..."></textarea>
                 </div>
             </div>
             <div class="column is-hidden-touch" id="preview-column">
                 <h1 class="title">Preview</h1>
-                <div class="wrapper field shadowed px-0 py-0">
-                    <iframe id="markdown-target" class="has-background-white height-100 width-100"></iframe>
+                <div class="wrapper field shadowed px-0 py-0 border-rad-4">
+                    <iframe id="markdown-target" class="has-background-white height-100 width-100 border-rad-4"></iframe>
                 </div>
             </div>
         </div>
