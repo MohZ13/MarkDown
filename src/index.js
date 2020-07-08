@@ -4,6 +4,7 @@ import './styles.scss';
 // library imports
 import $ from 'jquery';
 import marked from 'marked';
+import DomPurify from 'dompurify';
 
 /**
  * Binds navbar burger's click event for menu on mobile devices 
@@ -79,7 +80,7 @@ function debounce(fn, delay) {
  */
 function renderMarkdown(markdownSrcString) {
     const markdownTarget = $('#markdown-target').contents().find('body');
-    markdownTarget.html(marked(markdownSrcString));
+    markdownTarget.html(DomPurify.sanitize(marked(markdownSrcString)));
 }
 
 /**
