@@ -2,7 +2,7 @@
     "name": "MarkDown editor",
     "short_name": "MarkDown",
     "scope": "/",
-    "start_url": ".",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#363636",
     "theme_color": "#121212",
